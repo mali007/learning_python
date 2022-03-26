@@ -1,0 +1,51 @@
+from abc import abstractmethod, ABC
+
+# class BaseClass:
+#     def __init__(self):
+#         self.x = 10
+#
+# class ChildClass(BaseClass):
+#     def __init__(self):
+#         super(ChildClass, self).__init__()
+#         self.y = 20
+#
+# c_obj = ChildClass()
+# print(BaseClass.__subclasses__())
+
+
+class Human(ABC):
+    def __init__(self):
+        super(Human, self).__init__()
+        self.feelings_level = 60
+
+    @abstractmethod
+    def run(self):
+        print("hey ")
+
+class Robot(ABC):
+    def __init__(self):
+        super(Robot, self).__init__()
+        self.computation_level = 70
+
+    @abstractmethod
+    def vacuum(self):
+        print("vaccum")
+
+class Cyborg(Robot, Human):
+
+    def __init__(self):
+        super(Cyborg, self).__init__()
+
+    def vacuum(self):
+        print("nothing new in vacuum")
+
+    def run(self):
+        print("nothing new in run")
+
+
+h_obj = Cyborg()
+h_obj.vacuum()
+h_obj.run()
+print(h_obj.computation_level)
+print(h_obj.feelings_level)
+print(Cyborg.mro())
